@@ -1,7 +1,49 @@
-class SenderIdInvalidException implements Exception {}
+class SenderIdInvalidException implements Exception {
+  static const String report = "SenderIdInvalidException";
+  String idSender;
+  SenderIdInvalidException({required this.idSender});
 
-class ReceiverIdInvalidException implements Exception {}
+  @override
+  String toString() {
+    return "$report\nId Sender: $idSender";
+  }
+}
 
-class SenderNotAuthenticatedException implements Exception {}
+class ReceiverIdInvalidException implements Exception {
+  static const String report = "ReceiverIdInvalidException";
+  String idReceiver;
+  ReceiverIdInvalidException({required this.idReceiver});
 
-class SenderBalanceLowerThanAmountException implements Exception {}
+  @override
+  String toString() {
+    return "$report\nId Receiver: $idReceiver";
+  }
+}
+
+class SenderNotAuthenticatedException implements Exception {
+  static const String report = "SenderNotAuthenticatedException";
+  String idSender;
+  SenderNotAuthenticatedException({required this.idSender});
+
+  @override
+  String toString() {
+    return "$report\nId Sender: $idSender";
+  }
+}
+
+class SenderBalanceLowerThanAmountException implements Exception {
+  String report = "SenderBalanceLowerThanAmountException";
+  String idSender;
+  double senderBalance;
+  double amount;
+
+  SenderBalanceLowerThanAmountException(
+      {required this.idSender,
+      required this.senderBalance,
+      required this.amount});
+
+  @override
+  String toString() {
+    return "$report\nId Sender: $idSender\nSender Balance: $senderBalance\nAmount: $amount";
+  }
+}
